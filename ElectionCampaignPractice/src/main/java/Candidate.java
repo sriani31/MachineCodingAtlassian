@@ -3,11 +3,13 @@ public class Candidate {
     private final String candidate;
     private Integer votes;
     private Integer score;
+    private Integer lastVoter;
 
 
     public Candidate(String candidate) {
         this.candidate = candidate;
         this.votes = 0;
+        this.score = 0;
     }
 
     public String getCandidate() {
@@ -31,5 +33,17 @@ public class Candidate {
     public void incrementScore(int score)
     {
         this.score += score;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public Integer getLastVoter() {
+        return lastVoter;
+    }
+
+    public void updateLastVoter(Integer lastVoter) {
+        this.lastVoter = lastVoter;
     }
 }
