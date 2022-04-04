@@ -3,6 +3,7 @@ import java.util.stream.Collectors;
 
 public class ElectionCampaign {
 
+    private static final Integer MAX_CANDIDATES = 3;
     private final Map<String,Candidate> candidates;
     private final List<Candidate> rankedCandidates;
     private final Comparator<Candidate> candidateComparator;
@@ -42,8 +43,10 @@ public class ElectionCampaign {
                String candidateName = votes.get(i).get(candidatePref);
 
                Candidate candidate = candidates.getOrDefault(candidateName,new Candidate(candidateName));
-               candidate.incrementVotes();
+               //candidate.incrementVotes();
 
+               candidate.incrementScore(MAX_CANDIDATES - candidatePref);
+               candidate.updateLastVoter(i);
                candidates.put(candidateName,candidate);
 
            }
